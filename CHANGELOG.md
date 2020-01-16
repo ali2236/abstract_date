@@ -1,3 +1,6 @@
-## 1.0.0
+## [0.0.2]
+- added `isTypeOf<T>()` to `Date`
 
-- Initial version, created by Stagehand
+## [0.0.1]
+- added `Date`
+- added `DateAdapter`

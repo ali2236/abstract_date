@@ -24,6 +24,8 @@ class Date<T extends DateAdapter> extends AbstractDate{
 
   int get weekDay => dateTime.weekday;
 
+  bool isTypeOf<A extends DateAdapter>() => A == T;
+
   Date<A> to<A extends DateAdapter>() {
     return _adapters[A].fromDateTime(dateTime);
   }
@@ -32,4 +34,6 @@ class Date<T extends DateAdapter> extends AbstractDate{
   String toString() {
     return '$T: ' + super.toString();
   }
+
+
 }

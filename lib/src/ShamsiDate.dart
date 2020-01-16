@@ -22,3 +22,5 @@ class ShamsiDate extends DateAdapter {
   }
 
 }
+
+class Shamsi extends ShamsiDate {}

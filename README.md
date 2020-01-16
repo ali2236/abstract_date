@@ -1,22 +1,36 @@
-A library for Dart developers.
 
-Created from templates made available by Stagehand under a BSD-style
-[license](https://github.com/dart-lang/stagehand/blob/master/LICENSE).
-
-## Usage
-
-A simple usage example:
-
+Adding Adapters:
 ```dart
-import 'date_adapter.dart';
-
-main() {
-  var awesome = new Awesome();
-}
+    Date.addType<ShamsiDate>(ShamsiDate());
+    Date.addType<GregorianDate>(GregorianDate());
 ```
 
-## Features and bugs
+Constructor:
+```dart
+    var date = Date<ShamsiDate>(1379,6,26);
+    print(date.toString());
+```
 
-Please file feature requests and bugs at the [issue tracker][tracker].
+Date Converter:
+```dart
+    var converted = date.to<GregorianDate>();
+    print(converted);
 
-[tracker]: http://example.com/issues/replaceme
+    date = converted.to<Shamsi>();
+    print(date);
+
+```
+
+Week day getter:
+
+```dart
+    print(Date.now<GregorianDate>().weekDay);
+```
+
+Type checker:
+
+```dart
+    if(date.isTypeOf<ShamsiDate>()){
+      print('its shamsi!');
+    }
+```

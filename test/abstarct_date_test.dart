@@ -19,10 +19,14 @@ void main() {
       var converted = date.to<GregorianDate>();
       print(converted);
 
-      date = converted.to<ShamsiDate>();
+      date = converted.to<Shamsi>();
       print(date);
 
       print(Date.now<GregorianDate>().weekDay);
+
+      if(date.isTypeOf<ShamsiDate>()){
+        print('its shamsi!');
+      }
     });
 
 
