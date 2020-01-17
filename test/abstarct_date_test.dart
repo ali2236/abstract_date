@@ -16,10 +16,10 @@ void main() {
       var date = Date<ShamsiDate>(1379,6,26);
       print(date.toString());
 
-      var converted = date.to<GregorianDate>();
+      var converted = date.as<GregorianDate>();
       print(converted);
 
-      date = converted.to<Shamsi>();
+      date = converted.as<Shamsi>();
       print(date);
 
       print(Date.now<GregorianDate>().weekDay);

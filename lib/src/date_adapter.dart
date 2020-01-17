@@ -1,4 +1,5 @@
-import 'date.dart';
+import 'abstract_date.dart';
+
 
 abstract class DateAdapter<T extends AbstractDate> {
 
@@ -6,14 +7,6 @@ abstract class DateAdapter<T extends AbstractDate> {
 
   DateTime toDateTime(T date);
 
-}
+  int monthLength(int year, int month);
 
-abstract class AbstractDate {
-
-  final int year, month, day;
-
-  AbstractDate(this.year, this.month, this.day);
-
-  @override
-  String toString() => '$year/$month/$day';
 }
