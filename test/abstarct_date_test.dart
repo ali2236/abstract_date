@@ -1,19 +1,17 @@
 import 'package:abstarct_date/abstarct_date.dart';
-import 'package:abstarct_date/src/adapters/GrogorianDate.dart';
+import 'package:abstarct_date/src/adapters/GregorianDate.dart';
 import 'package:abstarct_date/src/adapters/ShamsiDate.dart';
 import 'package:test/test.dart';
 
 void main() {
   group('A group of tests', () {
-
-
-    setUp((){
+    setUp(() {
       Date.addType<ShamsiDate>(ShamsiDate());
       Date.addType<GregorianDate>(GregorianDate());
     });
 
     test('First Test', () {
-      var date = Date<ShamsiDate>(1379,6,26);
+      var date = Date<ShamsiDate>(1379, 6, 26);
       print(date.toString());
 
       var converted = date.as<GregorianDate>();
@@ -24,13 +22,9 @@ void main() {
 
       print(Date<GregorianDate>.now().weekDay);
 
-      if(date.isTypeOf<ShamsiDate>()){
+      if (date.isTypeOf<ShamsiDate>()) {
         print('its shamsi!');
       }
-
-
     });
-
-
   });
 }

@@ -3,14 +3,39 @@ import '../date.dart';
 import '../date_adapter.dart';
 
 class ShamsiDate extends DateAdapter {
+  static const monthsLength = [
+    0,
+    31,
+    59,
+    90,
+    120,
+    151,
+    181,
+    212,
+    243,
+    273,
+    304,
+    334
+  ];
 
-  static const monthsLength = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
-
-  static const kabiseMonthsLength = [0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335];
+  static const kabiseMonthsLength = [
+    0,
+    31,
+    60,
+    91,
+    121,
+    152,
+    182,
+    213,
+    244,
+    274,
+    305,
+    335
+  ];
 
   @override
   AbstractDate fromDateTime(DateTime dateTime) {
-    int year,month,day,ld;
+    int year, month, day, ld;
     var gregorianYear = dateTime.year;
     if ((gregorianYear % 4) != 0) {
       day = monthsLength[dateTime.month - 1] + dateTime.day;

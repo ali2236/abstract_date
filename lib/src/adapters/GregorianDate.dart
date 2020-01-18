@@ -16,7 +16,9 @@ class GregorianDate extends DateAdapter {
 
   @override
   int monthLength(int year, int month) {
-    return DateTime(year,month).difference(DateTime(year,month+1,0)).inDays;
+    return DateTime(year, month)
+        .difference(DateTime(year, month + 1, 0))
+        .inDays;
   }
 }
 
