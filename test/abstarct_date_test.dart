@@ -1,6 +1,6 @@
-import 'package:abstarct_date/src/GrogorianDate.dart';
-import 'package:abstarct_date/src/ShamsiDate.dart';
-import 'package:abstarct_date/src/date.dart';
+import 'package:abstarct_date/abstarct_date.dart';
+import 'package:abstarct_date/src/adapters/GrogorianDate.dart';
+import 'package:abstarct_date/src/adapters/ShamsiDate.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -22,11 +22,13 @@ void main() {
       date = converted.as<Shamsi>();
       print(date);
 
-      print(Date.now<GregorianDate>().weekDay);
+      print(Date<GregorianDate>.now().weekDay);
 
       if(date.isTypeOf<ShamsiDate>()){
         print('its shamsi!');
       }
+
+
     });
 
 

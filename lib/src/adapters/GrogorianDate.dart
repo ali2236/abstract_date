@@ -1,6 +1,7 @@
 import 'package:abstarct_date/src/date_adapter.dart';
 
-import 'date.dart';
+import '../abstract_date.dart';
+import '../date.dart';
 
 class GregorianDate extends DateAdapter {
   @override
@@ -11,5 +12,10 @@ class GregorianDate extends DateAdapter {
   @override
   DateTime toDateTime(AbstractDate date) {
     return DateTime(date.year, date.month, date.day);
+  }
+
+  @override
+  int monthLength(int year, int month) {
+    return DateTime(year,month).difference(DateTime(year,month+1,0)).inDays;
   }
 }
