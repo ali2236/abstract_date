@@ -19,3 +19,7 @@ class GregorianDate extends DateAdapter {
     return DateTime(year,month).difference(DateTime(year,month+1,0)).inDays;
   }
 }
+
+class MiladiDate extends GregorianDate {}
+
+class Miladi extends GregorianDate {}

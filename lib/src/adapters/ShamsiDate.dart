@@ -124,20 +124,19 @@ class ShamsiDate extends DateAdapter {
 
   @override
   DateTime toDateTime(AbstractDate date) {
-    return DateTime(
-      date.year - 1000,
-      date.month - 4,
-      date.day,
-    );
+    throw UnimplementedError();
   }
 
   @override
   int monthLength(int year, int month) {
-
-
-
     return 30;
   }
 }
+
+class PersianDate extends ShamsiDate {}
+
+class JalaliDate extends ShamsiDate {}
+
+class Jalali extends ShamsiDate {}
 
 class Shamsi extends ShamsiDate {}

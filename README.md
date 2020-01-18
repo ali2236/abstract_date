@@ -13,10 +13,10 @@ Constructor:
 
 Date Converter:
 ```dart
-    var converted = date.to<GregorianDate>();
+    var converted = date.as<GregorianDate>();
     print(converted);
 
-    date = converted.to<Shamsi>();
+    date = converted.as<Shamsi>();
     print(date);
 
 ```
@@ -33,4 +33,15 @@ Type checker:
     if(date.isTypeOf<ShamsiDate>()){
       print('its shamsi!');
     }
+```
+
+Utility methods:
+```dart
+    var tomorrow = date.add(Duration(days: 1));
+
+    Duration d = date.difference(tomorrow);
+    
+    var realTomorrow = date.copy(
+      day: date.day + 1,
+    );
 ```
