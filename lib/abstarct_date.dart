@@ -5,3 +5,4 @@ export 'src/date.dart';
 
 export 'src/adapters/GregorianDate.dart';
 export 'src/adapters/ShamsiDate.dart';
+export 'src/adapters/HijriDate.dart';
