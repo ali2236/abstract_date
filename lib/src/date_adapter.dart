@@ -1,7 +1,6 @@
 import 'abstract_date.dart';
 
 abstract class DateAdapter<T extends AbstractDate> {
-
   int get firstDayOfTheWeek;
 
   T fromDateTime(DateTime dateTime);

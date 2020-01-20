@@ -31,17 +31,38 @@ class ShamsiDate extends DateAdapter with DateFormatter {
   @override
   String monthName(int month) {
     assert(month > 0 && month < 13);
-    const names = ['فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور', 'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند'];
-    return names[month-1];
+    const names = [
+      'فروردین',
+      'اردیبهشت',
+      'خرداد',
+      'تیر',
+      'مرداد',
+      'شهریور',
+      'مهر',
+      'آبان',
+      'آذر',
+      'دی',
+      'بهمن',
+      'اسفند'
+    ];
+    return names[month - 1];
   }
 
   @override
   String weekDayName(int weekDay) {
-    const names =['شنبه', 'یک شنبه', 'دو شنبه', 'سه شنبه', 'چهار شنبه', 'پنج شنبه', 'جمعه'];
-    if(weekDay >= DateTime.saturday){
-      return names[weekDay-6];
+    const names = [
+      'شنبه',
+      'یک شنبه',
+      'دو شنبه',
+      'سه شنبه',
+      'چهار شنبه',
+      'پنج شنبه',
+      'جمعه'
+    ];
+    if (weekDay >= DateTime.saturday) {
+      return names[weekDay - 6];
     } else {
-      return names[weekDay+1];
+      return names[weekDay + 1];
     }
   }
 }

@@ -1,14 +1,13 @@
 import 'date.dart';
 
 class FormattedDate {
-
   final Date date;
 
   FormattedDate(this.date);
 
   String get yyyy => date.year.toString();
 
-  String get yy => yyyy.substring(yyyy.length-3);
+  String get yy => yyyy.substring(yyyy.length - 3);
 
   String get m => date.month.toString();
 
@@ -25,5 +24,4 @@ class FormattedDate {
   String get DD => DDDD.substring(0, 1);
 
   String get DDDD => date.weekDayName;
-
 }

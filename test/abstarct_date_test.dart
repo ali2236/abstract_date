@@ -26,7 +26,7 @@ void main() {
         print('its shamsi!');
       }
 
-      var formatted = date.formatBuilder((f){
+      var formatted = date.formatBuilder((f) {
         return '${f.yyyy} ${f.MMMM} ${f.dd}, ${f.DDDD}';
       });
 

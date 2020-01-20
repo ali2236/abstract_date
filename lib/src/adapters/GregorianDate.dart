@@ -5,7 +5,6 @@ import '../abstract_date.dart';
 import '../date.dart';
 
 class GregorianDate extends DateAdapter with DateFormatter {
-
   @override
   int get firstDayOfTheWeek => DateTime.monday;
 
@@ -33,7 +32,16 @@ class GregorianDate extends DateAdapter with DateFormatter {
 
   @override
   String weekDayName(int weekDay) {
-    const names = [null ,"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+    const names = [
+      null,
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ];
     return names[weekDay];
   }
 }

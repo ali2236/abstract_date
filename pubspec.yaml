@@ -1,6 +1,6 @@
 name: abstarct_date
-description: A starting point for Dart libraries or applications.
-version: 0.0.4
+description: Abstract date is a fluent date system for working with different date types from around the world.
+version: 0.0.4+1
 homepage: https://github.com/ali2236/abstarct_date
 author: Aligator <aligator2236@gmail.com>
 
@@ -8,8 +8,8 @@ environment:
   sdk: '>=2.2.0 <3.0.0'
 
 dependencies:
-  libcalendar:
-  hijri:
+  libcalendar: ^0.2.0
+  hijri: ^0.2.5
 #  path: ^1.6.0
 
 dev_dependencies:
