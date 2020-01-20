@@ -1,47 +1,62 @@
+# Showcase
 
-Adding Adapters:
+```dart
+// registering the date systems that we want to use
+    Date.addType<ShamsiDate>(ShamsiDate());
+    Date.addType<GregorianDate>(GregorianDate());
+
+// Creating a new date
+    var date = Date<ShamsiDate>(1379,6,26);
+
+// Converting dates
+    var converted = date.as<GregorianDate>();
+    date = converted.as<Shamsi>();
+
+// Type checking
+    if(date.isTypeOf<ShamsiDate>()){
+      print('its shamsi!');
+    }
+    
+// Other utility methods
+    var tomorrow = date.add(Duration(days: 1));
+    
+    Duration d = date.difference(tomorrow);
+  
+    var realTomorrow = date.copy(
+      day: date.day + 1,
+    );
+```
+
+# Date adapters
+### Implementing a new Date adapter
+```dart
+class NewDateSystem extends DateAdapter with DateFormatter {
+  ...
+}
+```
+
+If you don't add the `DateFormatter` mixin, some methods on date will throw an exception:
+1. `formatter`  
+1. `monthName`  
+1. `weekDayName`  
+1. `formatted`*  
+1. `formatBuilder`*
+
+\*: these might not throw exception if you don't use named parts.
+
+
+
+###Adding Adapters:
+Before using `Date` you should register the types you want to use.
 ```dart
     Date.addType<ShamsiDate>(ShamsiDate());
     Date.addType<GregorianDate>(GregorianDate());
 ```
 
-Constructor:
+### Renaming Adapters
+If you don't like the name of a certain adapter, just extend it and register with the new class:
 ```dart
-    var date = Date<ShamsiDate>(1379,6,26);
-    print(date.toString());
-```
-
-Date Converter:
-```dart
-    var converted = date.as<GregorianDate>();
-    print(converted);
-
-    date = converted.as<Shamsi>();
-    print(date);
-
-```
-
-Week day getter:
-
-```dart
-    print(Date.now<GregorianDate>().weekDay);
-```
-
-Type checker:
-
-```dart
-    if(date.isTypeOf<ShamsiDate>()){
-      print('its shamsi!');
-    }
-```
-
-Utility methods:
-```dart
-    var tomorrow = date.add(Duration(days: 1));
-
-    Duration d = date.difference(tomorrow);
-    
-    var realTomorrow = date.copy(
-      day: date.day + 1,
-    );
+class Hijri extends IslamicDate {}
+...
+Date.addType<Hijri>(Hijri());
 ```

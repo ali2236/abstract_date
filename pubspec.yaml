@@ -8,8 +8,8 @@ environment:
   sdk: '>=2.2.0 <3.0.0'
 
 dependencies:
-  libcalendar: ^0.2.0
-  hijri: ^0.2.5
+  libcalendar:
+  hijri:
 #  path: ^1.6.0
 
 dev_dependencies:
