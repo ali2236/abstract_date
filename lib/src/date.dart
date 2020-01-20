@@ -1,6 +1,7 @@
-import 'package:abstarct_date/abstarct_date.dart';
-
+import 'date_formatter.dart';
 import 'abstract_date.dart';
+import 'date_adapter.dart';
+import 'formatted_date.dart';
 
 class Date<T extends DateAdapter> extends AbstractDate<T> {
   static final Map<Type, DateAdapter> _adapters = {};
@@ -17,7 +18,11 @@ class Date<T extends DateAdapter> extends AbstractDate<T> {
 
   factory Date.fromDateTime(DateTime dt) => _adapters[T].fromDateTime(dt);
 
-  DateAdapter<Date<T>> get adapter => _adapters[T];
+  DateAdapter get adapter => _adapters[T];
+
+  DateFormatter get formatter => adapter is DateFormatter
+      ? adapter as DateFormatter
+      : throw 'no date formatter found!';
 
   DateTime get dateTime => adapter.toDateTime(this);
 
@@ -29,8 +34,6 @@ class Date<T extends DateAdapter> extends AbstractDate<T> {
 
   Date<A> as<A extends DateAdapter>() => _adapters[A].fromDateTime(dateTime);
 
-  String format(String format) => throw UnimplementedError();
-
   Date<T> add(Duration duration) =>
       adapter.fromDateTime(dateTime.add(duration));
 
@@ -38,6 +41,15 @@ class Date<T extends DateAdapter> extends AbstractDate<T> {
 
   Date<T> copy({int year, int month, int day}) =>
       Date<T>(year ?? this.year, month ?? this.month, day ?? this.day);
+
+  String get monthName => formatter.monthName(month);
+
+  String get weekDayName => formatter.weekDayName(weekDay);
+
+  FormattedDate get formatted => FormattedDate(this);
+
+  String formatBuilder(String Function(FormattedDate d) builder) =>
+      builder(formatted);
 
   String toString() => '$T: ' + super.toString();
 }

@@ -17,7 +17,7 @@ void main() {
       var converted = date.as<GregorianDate>();
       print(converted);
 
-      date = converted.as<Shamsi>();
+      date = converted.as<ShamsiDate>();
       print(date);
 
       print(Date<GregorianDate>.now().weekDay);
@@ -25,6 +25,13 @@ void main() {
       if (date.isTypeOf<ShamsiDate>()) {
         print('its shamsi!');
       }
+
+      var formatted = date.formatBuilder((f){
+        return '${f.yyyy} ${f.MMMM} ${f.dd}, ${f.DDDD}';
+      });
+
+      print(formatted);
+      // 1379 شهریور 26, شنبه
     });
   });
 }
