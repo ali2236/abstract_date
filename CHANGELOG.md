@@ -1,3 +1,8 @@
+## [0.0.4]
+- added `FormattedDate`
+- added `DateFormatter` mixin on `DateAdapter`
+- added `formatBuilder` for `Date`
+
 ## [0.0.3]
 - added default adapters `HijriDate`,
  `GregorianDate` or `MiladiDate` ,
