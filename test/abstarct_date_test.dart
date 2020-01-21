@@ -6,11 +6,16 @@ import 'package:test/test.dart';
 void main() {
   group('A group of tests', () {
     setUp(() {
+      Date.addType(HijriDate());
       Date.addType<ShamsiDate>(ShamsiDate());
       Date.addType<GregorianDate>(GregorianDate());
     });
 
     test('First Test', () {
+
+      var defaultDate = Date.now();
+      print(defaultDate);
+
       var date = Date<ShamsiDate>(1379, 6, 26);
       print(date.toString());
 

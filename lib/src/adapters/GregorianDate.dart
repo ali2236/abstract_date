@@ -45,7 +45,3 @@ class GregorianDate extends DateAdapter with DateFormatter {
     return names[weekDay];
   }
 }
-
-class MiladiDate extends GregorianDate {}
-
-class Miladi extends GregorianDate {}

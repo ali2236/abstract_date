@@ -1,3 +1,4 @@
+# abstract_date
 # Showcase
 
 ```dart
@@ -28,6 +29,23 @@
 ```
 
 # Date adapters
+
+###Adding Adapters:
+Before using `Date` you should register the types you want to use.
+```dart
+    Date.addType<ShamsiDate>(ShamsiDate());
+    Date.addType<GregorianDate>(GregorianDate());
+```
+
+### Setting a default adapter
+For setting an adapter as default, just register it with no generic type.
+```dart
+    Date.addType(ShamsiDate());
+    ...
+    // no generic type is used
+    var defaultDate = Date.now(); 
+```
+
 ### Implementing a new Date adapter
 ```dart
 class NewDateSystem extends DateAdapter with DateFormatter {
@@ -45,14 +63,6 @@ If you don't add the `DateFormatter` mixin, some methods on date will throw an e
 \*: these might not throw exception if you don't use named parts.
 
 
-
-###Adding Adapters:
-Before using `Date` you should register the types you want to use.
-```dart
-    Date.addType<ShamsiDate>(ShamsiDate());
-    Date.addType<GregorianDate>(GregorianDate());
-```
-
 ### Renaming Adapters
 If you don't like the name of a certain adapter, just extend it and register with the new class:
 ```dart
@@ -60,3 +70,13 @@ class Hijri extends IslamicDate {}
 ...
 Date.addType<Hijri>(Hijri());
 ```
+
+### DateAdapter provided implementations
+
+1. GregorianDate
+2. HijriDate
+3. ShamsiDate
+
+To use them, import abstract_date and
+ then register them using 
+ `Date.addType<T extends DateAdapter>()` before using them. 

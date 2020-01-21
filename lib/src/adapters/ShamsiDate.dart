@@ -66,13 +66,3 @@ class ShamsiDate extends DateAdapter with DateFormatter {
     }
   }
 }
-
-class PersianDate extends ShamsiDate {}
-
-class JalaliDate extends ShamsiDate {}
-
-class Jalali extends ShamsiDate {}
-
-class Shamsi extends ShamsiDate {}
-
-class SolarDate extends ShamsiDate {}
