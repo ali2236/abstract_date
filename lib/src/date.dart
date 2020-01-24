@@ -1,3 +1,5 @@
+import 'package:abstarct_date/src/week.dart';
+
 import 'date_formatter.dart';
 import 'abstract_date.dart';
 import 'date_adapter.dart';
@@ -128,6 +130,18 @@ class Date<T extends DateAdapter> extends AbstractDate<T> {
   ///
   ///
   FormattedDate get formatted => FormattedDate(this);
+
+  Date get tomorrow {
+    // TODO
+  }
+
+  Date get yesterday {
+    // TODO
+  }
+
+  Week get week {
+    // TODO
+  }
 
   ///
   /// creates a formatted string with the help of a [FormattedDate] and a builder function.
