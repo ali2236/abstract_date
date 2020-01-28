@@ -31,6 +31,16 @@ void main() {
         print('its shamsi!');
       }
 
+      print(date.week.month);
+      print(date.week.month.lastMonth);
+      print(date.week.month.nextMonth);
+
+      date = Date<ShamsiDate>.now();
+
+      print(date.week.firstDayOfTheWeek);
+      print(date.week.lastDayOfTheWeek);
+
+
       var formatted = date.formatBuilder((f) {
         return '${f.yyyy} ${f.MMMM} ${f.dd}, ${f.DDDD}';
       });

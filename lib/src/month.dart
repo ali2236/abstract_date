@@ -1,3 +1,5 @@
+import 'package:abstarct_date/src/week.dart';
+
 import 'date.dart';
 
 class Month {
@@ -7,19 +9,32 @@ class Month {
   Month(this.referenceDate);
 
   Date get firstDayOfTheMonth {
-    // TODO
+    return referenceDate.copy(day: 1);
   }
 
   Date get lastDayOfTheMonth {
-    // TODO
+    return referenceDate.copy(day: referenceDate.monthLength);
   }
 
   Month get nextMonth {
-    // TODO
+    return Month(lastDayOfTheMonth.add(Duration(days: 1)));
   }
 
   Month get lastMonth {
+    return Month(firstDayOfTheMonth.add(Duration(days: -1)));
+  }
+
+  int get numberOfWeeks {
     // TODO
+  }
+
+  List<Week> get weeks {
+
+  }
+
+  @override
+  String toString() {
+    return '${referenceDate.year}/${referenceDate.month}';
   }
 
 }

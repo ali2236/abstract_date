@@ -92,8 +92,10 @@ class Date<T extends DateAdapter> extends AbstractDate<T> {
   ///
   /// added a the number of days of the [Duration] to a new [Date]
   ///
-  Date<T> add(Duration duration) =>
-      adapter.fromDateTime(dateTime.add(duration));
+  Date<T> add(Duration duration) {
+    if(duration.inDays == 0) return copy();
+    return adapter.fromDateTime(dateTime.add(duration));
+  }
 
   ///
   /// the difference between two [Date]s as a duration.
@@ -131,17 +133,20 @@ class Date<T extends DateAdapter> extends AbstractDate<T> {
   ///
   FormattedDate get formatted => FormattedDate(this);
 
-  Date get tomorrow {
-    // TODO
-  }
+  ///
+  /// the day after this date
+  ///
+  Date get tomorrow => add(Duration(days: 1));
 
-  Date get yesterday {
-    // TODO
-  }
+  ///
+  /// the day before this date
+  ///
+  Date get yesterday => add(Duration(days: -1));
 
-  Week get week {
-    // TODO
-  }
+  ///
+  /// the week
+  ///
+  Week get week => Week(this);
 
   ///
   /// creates a formatted string with the help of a [FormattedDate] and a builder function.
