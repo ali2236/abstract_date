@@ -1,4 +1,7 @@
+import 'package:abstarct_date/abstarct_date.dart';
+import 'package:abstarct_date/src/month.dart';
 import 'package:abstarct_date/src/week.dart';
+import 'package:abstarct_date/src/year.dart';
 
 import 'date_formatter.dart';
 import 'abstract_date.dart';
@@ -6,13 +9,56 @@ import 'date_adapter.dart';
 import 'formatted_date.dart';
 
 class Date<T extends DateAdapter> extends AbstractDate<T> {
-  static final Map<Type, DateAdapter> _adapters = {};
+  static final Map<Type, DateAdapter> _adapters = {
+    GregorianDate: GregorianDate(),
+    ShamsiDate: ShamsiDate(),
+    HijriDate: HijriDate(),
+  };
 
   ///
   /// used to add new [DateAdapter]s to [Date]
   ///
   static void addType<A extends DateAdapter>(DateAdapter dateAdapter) {
     _adapters.putIfAbsent(A, () => dateAdapter);
+  }
+
+  ///
+  /// returns the adapter registered under the [A] type
+  ///
+  /// if their are no adapters registered, it will register the default adapters
+  ///
+  static DateAdapter getAdapterOfType<A extends DateAdapter>() {
+    if(_adapters.isEmpty){
+      _adapters.addAll({
+        GregorianDate: GregorianDate(),
+        ShamsiDate: ShamsiDate(),
+        HijriDate: HijriDate(),
+      });
+    }
+    return _adapters[A];
+  }
+
+  ///
+  /// removes the adapter registered under the [A] type
+  ///
+  static void removeType<A extends DateAdapter>() {
+    _adapters.remove(A);
+  }
+
+  ///
+  /// moves an adapter from being registered under the [OLD] type
+  /// to the [NEW] type
+  ///
+  static void renameType<OLD extends DateAdapter, NEW extends DateAdapter>() {
+    addType<NEW>(_adapters[OLD]);
+    removeType<OLD>();
+  }
+
+  ///
+  /// removes all registered types
+  ///
+  static void clearTypes() {
+    _adapters.clear();
   }
 
   //////////////////////////////////////////////////////////////////////////////
@@ -27,12 +73,13 @@ class Date<T extends DateAdapter> extends AbstractDate<T> {
   ///
   /// creates a new [Date] with the current date converted to date type of [T]
   ///
-  factory Date.now() => _adapters[T].fromDateTime(DateTime.now());
+  factory Date.now() => getAdapterOfType<T>().fromDateTime(DateTime.now());
 
   ///
   /// creates a new [Date] from a [DateTime] converted to DateType of [T]
   ///
-  factory Date.fromDateTime(DateTime dt) => _adapters[T].fromDateTime(dt);
+  factory Date.fromDateTime(DateTime dt) =>
+      getAdapterOfType<T>().fromDateTime(dt);
 
   ///
   /// constructs a new [Date] from another instance of an [AbstractDate]
@@ -46,7 +93,7 @@ class Date<T extends DateAdapter> extends AbstractDate<T> {
   ///
   /// returns the [DateAdapter] that is used for this date.
   ///
-  DateAdapter get adapter => _adapters[T];
+  DateAdapter get adapter => getAdapterOfType<T>();
 
   ///
   /// returns the [DateAdapter] as a [DateFormatter]
@@ -72,6 +119,13 @@ class Date<T extends DateAdapter> extends AbstractDate<T> {
   int get weekDay => dateTime.weekday;
 
   ///
+  /// normalized week day
+  /// where first weekDay is 1
+  /// and last week day is 7
+  ///
+  int get nWeekDay => Week.normalizeWeekDay(weekDay, adapter.firstDayOfTheWeek);
+
+  ///
   /// return the month length based on [year] and [month]
   /// using the dates [adapter]
   ///
@@ -92,9 +146,11 @@ class Date<T extends DateAdapter> extends AbstractDate<T> {
   ///
   /// added a the number of days of the [Duration] to a new [Date]
   ///
-  Date<T> add(Duration duration) {
-    if(duration.inDays == 0) return copy();
-    return adapter.fromDateTime(dateTime.add(duration));
+  Date<T> add(int days) {
+    if (days == 0) return copy();
+    var hours = 0;//days > 0 ? 1 : -1;
+    return adapter
+        .fromDateTime(dateTime.add(Duration(days: days, hours: hours)));
   }
 
   ///
@@ -136,17 +192,27 @@ class Date<T extends DateAdapter> extends AbstractDate<T> {
   ///
   /// the day after this date
   ///
-  Date get tomorrow => add(Duration(days: 1));
+  Date get tomorrow => add(1);
 
   ///
   /// the day before this date
   ///
-  Date get yesterday => add(Duration(days: -1));
+  Date get yesterday => add(-1);
 
   ///
-  /// the week
+  /// the week containing this date
   ///
   Week get week => Week(this);
+
+  ///
+  /// the month containing this date
+  ///
+  Month getMonth() => Month(this);
+
+  ///
+  /// the Year containing this date
+  ///
+  Year getYear() => Year(this);
 
   ///
   /// creates a formatted string with the help of a [FormattedDate] and a builder function.
@@ -156,4 +222,28 @@ class Date<T extends DateAdapter> extends AbstractDate<T> {
 
   @override
   String toString() => '$T: ' + super.toString();
+
+  bool operator <(other){
+    if(other is! Date) return false;
+    var d = (other as Date).dateTime;
+    return dateTime.compareTo(d) < 0;
+  }
+
+  bool operator <=(other){
+    if(other is! Date) return false;
+    var d = (other as Date).dateTime;
+    return dateTime.compareTo(d) <= 0;
+  }
+
+  bool operator >(other){
+    if(other is! Date) return false;
+    var d = (other as Date).dateTime;
+    return dateTime.compareTo(d) > 0;
+  }
+
+  bool operator >=(other){
+    if(other is! Date) return false;
+    var d = (other as Date).dateTime;
+    return dateTime.compareTo(d) >= 0;
+  }
 }

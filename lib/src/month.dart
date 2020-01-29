@@ -1,5 +1,5 @@
 import 'package:abstarct_date/src/week.dart';
-
+import 'package:abstarct_date/src/year.dart';
 import 'date.dart';
 
 class Month {
@@ -17,19 +17,56 @@ class Month {
   }
 
   Month get nextMonth {
-    return Month(lastDayOfTheMonth.add(Duration(days: 1)));
+    return Month(lastDayOfTheMonth.add(1));
   }
 
   Month get lastMonth {
-    return Month(firstDayOfTheMonth.add(Duration(days: -1)));
+    return Month(firstDayOfTheMonth.add( -1));
+  }
+
+  Week get firstWeek {
+    return Week(firstDayOfTheMonth);
+  }
+
+  Week get lastWeek {
+    return Week(lastDayOfTheMonth);
+  }
+
+  Year get year {
+    return Year(referenceDate);
+  }
+
+  int get length {
+    return referenceDate.monthLength;
   }
 
   int get numberOfWeeks {
-    // TODO
+    var baseDays = 7 * 3;
+    var fwd = firstDayOfTheMonth.nWeekDay;
+    var fwdays = 7 - fwd + 1;
+    var ml = length - baseDays - fwdays;
+    var weeks = 4 + (ml/7).ceil();
+    return weeks;
   }
 
-  List<Week> get weeks {
+  Iterable<Week> get weeks sync*{
+    var week = firstDayOfTheMonth.week;
+    var last = lastDayOfTheMonth.week;
+    while(week != last){
+      yield week;
+      week = week.nextWeek;
+    }
+    yield last;
+  }
 
+  Iterable<Date> get days sync*{
+    var day = firstDayOfTheMonth;
+    var last = lastDayOfTheMonth;
+    while(day != last){
+      yield day;
+      day = day.tomorrow;
+    }
+    yield last;
   }
 
   @override

@@ -31,14 +31,19 @@ void main() {
         print('its shamsi!');
       }
 
-      print(date.week.month);
+/*      print(date.week.month);
       print(date.week.month.lastMonth);
       print(date.week.month.nextMonth);
 
       date = Date<ShamsiDate>.now();
 
       print(date.week.firstDayOfTheWeek);
-      print(date.week.lastDayOfTheWeek);
+      print(date.week.lastDayOfTheWeek);*/
+
+      date = Date<ShamsiDate>.now();
+      for(var day in date.week.days){
+        print(day);
+      }
 
 
       var formatted = date.formatBuilder((f) {
