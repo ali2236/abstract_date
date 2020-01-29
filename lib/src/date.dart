@@ -39,6 +39,15 @@ class Date<T extends DateAdapter> extends AbstractDate<T> {
   }
 
   ///
+  /// returns the adapter with the same id.
+  ///
+  /// if their is no such adapter, it will return null.
+  ///
+  static DateAdapter getAdapterWithId(String id){
+    return _adapters.values.firstWhere((a)=>a.id==id);
+  }
+
+  ///
   /// removes the adapter registered under the [A] type
   ///
   static void removeType<A extends DateAdapter>() {
