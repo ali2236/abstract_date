@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:abstarct_date/abstarct_date.dart';
 import 'package:abstarct_date/src/month.dart';
 
@@ -73,24 +71,31 @@ class Week {
 
   ///
   /// Index of this week in it's month.
-  /// starts from 1
+  /// starts from 1.
+  ///
+  /// A week can be between two month,
+  /// in that case it will return the one with the reference date in it.
   ///
   int get weekInMonth {
-    var month = this.month;
-    var index = month.weeks.toList().indexOf(this);
-    return index + 1;
+    var m = month;
+    var week = m.firstWeek;
+    for (var i = 1; i <= m.numberOfWeeks; i++) {
+      if (week == this) {
+        return i;
+      }
+      week = week.nextWeek;
+    }
+    throw 'week index not found!';
   }
 
   @override
   String toString() {
-    return jsonEncode({
-      'week': days.map((d) => d.toString()).toList(),
-    });
+    return '${referenceDate.year}/${referenceDate.month}, week: $weekInMonth';
   }
 
   @override
   bool operator ==(other) {
-    if (other != Week) return false;
+    if (other is! Week) return false;
     return firstDayOfTheWeek == other.firstDayOfTheWeek;
   }
 }

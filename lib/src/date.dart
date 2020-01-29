@@ -68,7 +68,7 @@ class Date<T extends DateAdapter> extends AbstractDate<T> {
   ///
   /// type [T] must be registered.
   ///
-  Date(int year, [int month = 1, int day = 1]) : super(year, month, day);
+  const Date(int year, [int month = 1, int day = 1]) : super(year, month, day);
 
   ///
   /// creates a new [Date] with the current date converted to date type of [T]

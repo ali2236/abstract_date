@@ -7,6 +7,8 @@ void main() {
 
     var month = date.getMonth();
 
+    //print(month.weeks);
+
     expect(month.length, equals(30));
 
     expect(month.numberOfWeeks, equals(5));

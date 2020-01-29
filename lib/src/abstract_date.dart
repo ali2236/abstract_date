@@ -1,7 +1,7 @@
 abstract class AbstractDate<T> implements Comparable<AbstractDate<T>> {
   final int year, month, day;
 
-  AbstractDate(this.year, this.month, this.day);
+  const AbstractDate(this.year, this.month, this.day);
 
   @override
   bool operator ==(other) {
