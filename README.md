@@ -11,7 +11,7 @@
 
 // Converting dates
     var converted = date.as<GregorianDate>();
-    date = converted.as<Shamsi>();
+    date = converted.to<Shamsi>();
 
 // Type checking
     if(date.isTypeOf<ShamsiDate>()){

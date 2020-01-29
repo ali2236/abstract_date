@@ -141,7 +141,8 @@ class Date<T extends DateAdapter> extends AbstractDate<T> {
   ///
   /// Type [A] must be registered, otherwise it will throw an exception.
   ///
-  Date<A> as<A extends DateAdapter>() => _adapters[A].fromDateTime(dateTime);
+  Date<A> to<A extends DateAdapter>() => _adapters[A].fromDateTime(dateTime);
+  @Deprecated('use [to] inestead') Date<A> as<A extends DateAdapter>() => to<A>();
 
   ///
   /// added a the number of days of the [Duration] to a new [Date]
