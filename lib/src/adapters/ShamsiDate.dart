@@ -7,6 +7,10 @@ import '../date_adapter.dart';
 import '../external/shamsi_date/shamsi_date.dart' as shamsi;
 
 class ShamsiDate extends DateAdapter with DateFormatter {
+
+  @override
+  String get id => 'ShamsiDate';
+
   @override
   int get firstDayOfTheWeek => DateTime.saturday;
 

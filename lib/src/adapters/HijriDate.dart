@@ -7,6 +7,10 @@ import 'package:libcalendar/libcalendar.dart' as lib;
 import 'package:hijri/umm_alqura_calendar.dart' as cal;
 
 class HijriDate extends DateAdapter with DateFormatter {
+
+  @override
+  String get id => 'HijriDate';
+
   @override
   int get firstDayOfTheWeek => DateTime.saturday;
 

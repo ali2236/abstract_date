@@ -5,6 +5,10 @@ import '../abstract_date.dart';
 import '../date.dart';
 
 class GregorianDate extends DateAdapter with DateFormatter {
+
+  @override
+  String get id => 'GregorianDate';
+
   @override
   int get firstDayOfTheWeek => DateTime.monday;
 
@@ -44,4 +48,6 @@ class GregorianDate extends DateAdapter with DateFormatter {
     ];
     return names[weekDay];
   }
+
+
 }
