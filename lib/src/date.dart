@@ -28,7 +28,7 @@ class Date<T extends DateAdapter> extends AbstractDate<T> {
   /// if their are no adapters registered, it will register the default adapters
   ///
   static DateAdapter getAdapterOfType<A extends DateAdapter>() {
-    if(_adapters.isEmpty){
+    if (_adapters.isEmpty) {
       _adapters.addAll({
         GregorianDate: GregorianDate(),
         ShamsiDate: ShamsiDate(),
@@ -142,14 +142,15 @@ class Date<T extends DateAdapter> extends AbstractDate<T> {
   /// Type [A] must be registered, otherwise it will throw an exception.
   ///
   Date<A> to<A extends DateAdapter>() => _adapters[A].fromDateTime(dateTime);
-  @Deprecated('use [to] inestead') Date<A> as<A extends DateAdapter>() => to<A>();
+  @Deprecated('use [to] inestead')
+  Date<A> as<A extends DateAdapter>() => to<A>();
 
   ///
   /// added a the number of days of the [Duration] to a new [Date]
   ///
   Date<T> add(int days) {
     if (days == 0) return copy();
-    var hours = 0;//days > 0 ? 1 : -1;
+    var hours = 0; //days > 0 ? 1 : -1;
     return adapter
         .fromDateTime(dateTime.add(Duration(days: days, hours: hours)));
   }
@@ -224,26 +225,26 @@ class Date<T extends DateAdapter> extends AbstractDate<T> {
   @override
   String toString() => '$T: ' + super.toString();
 
-  bool operator <(other){
-    if(other is! Date) return false;
+  bool operator <(other) {
+    if (other is! Date) return false;
     var d = (other as Date).dateTime;
     return dateTime.compareTo(d) < 0;
   }
 
-  bool operator <=(other){
-    if(other is! Date) return false;
+  bool operator <=(other) {
+    if (other is! Date) return false;
     var d = (other as Date).dateTime;
     return dateTime.compareTo(d) <= 0;
   }
 
-  bool operator >(other){
-    if(other is! Date) return false;
+  bool operator >(other) {
+    if (other is! Date) return false;
     var d = (other as Date).dateTime;
     return dateTime.compareTo(d) > 0;
   }
 
-  bool operator >=(other){
-    if(other is! Date) return false;
+  bool operator >=(other) {
+    if (other is! Date) return false;
     var d = (other as Date).dateTime;
     return dateTime.compareTo(d) >= 0;
   }

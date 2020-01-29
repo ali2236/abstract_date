@@ -12,7 +12,6 @@ void main() {
     });
 
     test('First Test', () {
-
       var defaultDate = Date.now();
       print(defaultDate);
 
@@ -41,10 +40,9 @@ void main() {
       print(date.week.lastDayOfTheWeek);*/
 
       date = Date<ShamsiDate>.now();
-      for(var day in date.week.days){
+      for (var day in date.week.days) {
         print(day);
       }
-
 
       var formatted = date.formatBuilder((f) {
         return '${f.yyyy} ${f.MMMM} ${f.dd}, ${f.DDDD}';

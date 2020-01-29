@@ -5,6 +5,9 @@ export 'src/date.dart';
 export 'src/formatted_date.dart';
 export 'src/date_formatter.dart';
 
+export 'src/week.dart';
+export 'src/month.dart';
+
 export 'src/adapters/GregorianDate.dart';
 export 'src/adapters/ShamsiDate.dart';
 export 'src/adapters/HijriDate.dart';

@@ -3,7 +3,6 @@ import 'package:abstarct_date/src/year.dart';
 import 'date.dart';
 
 class Month {
-
   final Date referenceDate;
 
   Month(this.referenceDate);
@@ -21,7 +20,7 @@ class Month {
   }
 
   Month get lastMonth {
-    return Month(firstDayOfTheMonth.add( -1));
+    return Month(firstDayOfTheMonth.add(-1));
   }
 
   Week get firstWeek {
@@ -45,24 +44,24 @@ class Month {
     var fwd = firstDayOfTheMonth.nWeekDay;
     var fwdays = 7 - fwd + 1;
     var ml = length - baseDays - fwdays;
-    var weeks = 4 + (ml/7).ceil();
+    var weeks = 4 + (ml / 7).ceil();
     return weeks;
   }
 
-  Iterable<Week> get weeks sync*{
+  Iterable<Week> get weeks sync* {
     var week = firstDayOfTheMonth.week;
     var last = lastDayOfTheMonth.week;
-    while(week != last){
+    while (week != last) {
       yield week;
       week = week.nextWeek;
     }
     yield last;
   }
 
-  Iterable<Date> get days sync*{
+  Iterable<Date> get days sync* {
     var day = firstDayOfTheMonth;
     var last = lastDayOfTheMonth;
-    while(day != last){
+    while (day != last) {
       yield day;
       day = day.tomorrow;
     }
@@ -73,5 +72,4 @@ class Month {
   String toString() {
     return '${referenceDate.year}/${referenceDate.month}';
   }
-
 }

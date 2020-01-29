@@ -1,11 +1,9 @@
 import 'package:abstarct_date/abstarct_date.dart';
 import 'package:test/test.dart';
 
-void main(){
-
-  test('month test', (){
-
-    var date = Date<ShamsiDate>(1398,11,9);
+void main() {
+  test('month test', () {
+    var date = Date<ShamsiDate>(1398, 11, 9);
 
     var month = date.getMonth();
 
@@ -15,5 +13,4 @@ void main(){
 
     expect(month.nextMonth.nextMonth.numberOfWeeks, equals(6));
   });
-
 }

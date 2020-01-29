@@ -1,3 +1,8 @@
+## [0.0.5]
+- default adapters will be registered automatically if their is no registered adapters
+- added `Week` class
+- added `Month` class
+
 ## [0.0.4]
 - added `FormattedDate`
 - added `DateFormatter` mixin on `DateAdapter`

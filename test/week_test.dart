@@ -2,11 +2,9 @@ import 'package:abstarct_date/abstarct_date.dart';
 import 'package:abstarct_date/src/week.dart';
 import 'package:test/test.dart';
 
-void main(){
-
-  test('week test', (){
-
-    var date = Date<ShamsiDate>(1398,11,9);
+void main() {
+  test('week test', () {
+    var date = Date<ShamsiDate>(1398, 11, 9);
 
     var week = date.week;
 
@@ -24,5 +22,4 @@ void main(){
 
     expect(week.weekInMonth, equals(2));
   });
-
 }
