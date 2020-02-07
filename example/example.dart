@@ -1,19 +1,27 @@
 import 'package:abstarct_date/abstarct_date.dart';
 
 void main() {
-  Date.addType<ShamsiDate>(ShamsiDate());
-  Date.addType<GregorianDate>(GregorianDate());
+  ///
+  ///default adapters are added automatically if you don't use [Date.addType]
+  ///
+  // Date.addType<ShamsiDate>(ShamsiDate());
+  // Date.addType<GregorianDate>(GregorianDate());
 
   var date = Date<ShamsiDate>(1379, 6, 26);
   print(date.toString());
 
-  var converted = date.as<GregorianDate>();
-  print(converted);
+  var miladi = date.to<GregorianDate>();
+  print(miladi);
 
-  date = converted.as<ShamsiDate>();
+  var hijri = date.to<HijriDate>();
+  print(hijri);
+
+  date = miladi.to<ShamsiDate>();
   print(date);
 
-  print(Date<GregorianDate>.now().weekDay);
+  var nth = Week.normalizeWeekDay(Date.getAdapterOfType<ShamsiDate>().firstDayOfTheWeek,DateTime.monday);
+
+  print('Monday is the ${nth}rd day in shamsi calednar');
 
   if (date.isTypeOf<ShamsiDate>()) {
     print('its shamsi!');

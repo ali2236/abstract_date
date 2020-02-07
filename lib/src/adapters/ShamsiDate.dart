@@ -1,12 +1,10 @@
-import 'package:abstarct_date/src/date_formatter.dart';
 
-import '../abstract_date.dart';
-import '../date.dart';
-import '../date_adapter.dart';
 
+import 'package:abstarct_date/abstarct_date.dart';
+import 'package:abstarct_date/src/dateAdapter/efficient_leap_year.dart';
 import '../external/shamsi_date/shamsi_date.dart' as shamsi;
 
-class ShamsiDate extends DateAdapter with DateFormatter {
+class ShamsiDate extends DateAdapter with DateFormatter, EfficientLeapYear {
 
   @override
   String get id => 'ShamsiDate';
@@ -30,6 +28,11 @@ class ShamsiDate extends DateAdapter with DateFormatter {
   int monthLength(int year, int month) {
     var pd = shamsi.Jalali(year, month);
     return pd.monthLength;
+  }
+
+  @override
+  bool isLeapYear(int year) {
+    return shamsi.Jalali(year).isLeapYear();
   }
 
   @override

@@ -1,4 +1,4 @@
-import 'abstract_date.dart';
+import '../abstract_date.dart';
 
 abstract class DateAdapter<T extends AbstractDate> {
 

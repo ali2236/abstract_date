@@ -1,8 +1,9 @@
 # abstract_date
-# Showcase
 
 ```dart
-// registering the date systems that we want to use
+// registering the date systems that we want to use.
+// if you don't register any adapters then 
+// the default adapters are going to get registered automatically.
     Date.addType<ShamsiDate>(ShamsiDate());
     Date.addType<GregorianDate>(GregorianDate());
 
@@ -10,7 +11,7 @@
     var date = Date<ShamsiDate>(1379,6,26);
 
 // Converting dates
-    var converted = date.as<GregorianDate>();
+    var converted = date.to<GregorianDate>();
     date = converted.to<Shamsi>();
 
 // Type checking

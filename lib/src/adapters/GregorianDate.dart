@@ -1,8 +1,4 @@
-import 'package:abstarct_date/src/date_adapter.dart';
-import 'package:abstarct_date/src/date_formatter.dart';
-
-import '../abstract_date.dart';
-import '../date.dart';
+import 'package:abstarct_date/abstarct_date.dart';
 
 class GregorianDate extends DateAdapter with DateFormatter {
 

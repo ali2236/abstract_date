@@ -28,14 +28,14 @@ class Month {
   ///
   /// The first day of this month
   ///
-  Date get firstDayOfTheMonth {
+  Date get firstDay {
     return referenceDate.copy(day: 1);
   }
 
   ///
   /// the last day of this month
   ///
-  Date get lastDayOfTheMonth {
+  Date get lastDay {
     return referenceDate.copy(day: referenceDate.monthLength);
   }
 
@@ -43,28 +43,28 @@ class Month {
   /// The month after this month
   ///
   Month get nextMonth {
-    return Month(lastDayOfTheMonth.add(1));
+    return Month(lastDay.add(1));
   }
 
   ///
   /// The month before this month
   ///
   Month get lastMonth {
-    return Month(firstDayOfTheMonth.add(-1));
+    return Month(firstDay.add(-1));
   }
 
   ///
   /// The first week of this month
   ///
   Week get firstWeek {
-    return Week(firstDayOfTheMonth);
+    return Week(firstDay);
   }
 
   ///
   /// The last week of this month
   ///
   Week get lastWeek {
-    return Week(lastDayOfTheMonth);
+    return Week(lastDay);
   }
 
   ///
@@ -86,7 +86,7 @@ class Month {
   ///
   int get numberOfWeeks {
     const baseDays = 7 * 3;
-    var fwd = firstDayOfTheMonth.nWeekDay;
+    var fwd = firstDay.nWeekDay;
     var daysInTheFirstWeek = 7 - fwd + 1;
     var ml = length - baseDays - daysInTheFirstWeek;
     var weeks = 4 + (ml / 7).ceil();
@@ -98,7 +98,7 @@ class Month {
   ///
   Iterable<Week> get weeks sync* {
     var weeks = numberOfWeeks;
-    var week = firstDayOfTheMonth.week;
+    var week = firstDay.week;
     for (var i = 0; i < weeks; i++) {
       yield week;
       week = week.nextWeek;
@@ -110,7 +110,7 @@ class Month {
   ///
   Iterable<Date> get days sync* {
     var days = length;
-    var day = firstDayOfTheMonth;
+    var day = firstDay;
     for (var i = 0; i < days; i++) {
       yield day;
       day = day.tomorrow;

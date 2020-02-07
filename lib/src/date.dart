@@ -1,12 +1,6 @@
-import 'package:abstarct_date/abstarct_date.dart';
-import 'package:abstarct_date/src/month.dart';
-import 'package:abstarct_date/src/week.dart';
-import 'package:abstarct_date/src/year.dart';
 
-import 'date_formatter.dart';
-import 'abstract_date.dart';
-import 'date_adapter.dart';
-import 'formatted_date.dart';
+
+import 'package:abstarct_date/abstarct_date.dart';
 
 class Date<T extends DateAdapter> extends AbstractDate<T> {
   static final Map<Type, DateAdapter> _adapters = {
@@ -132,7 +126,7 @@ class Date<T extends DateAdapter> extends AbstractDate<T> {
   /// where first weekDay is 1
   /// and last week day is 7
   ///
-  int get nWeekDay => Week.normalizeWeekDay(weekDay, adapter.firstDayOfTheWeek);
+  int get nWeekDay => Week.normalizeWeekDay(adapter.firstDayOfTheWeek, weekDay);
 
   ///
   /// return the month length based on [year] and [month]

@@ -6,8 +6,7 @@ class Week {
 
   Week(this.referenceDate);
 
-  static int normalizeWeekDay(int weekDay, int firstWeekDay) {
-    DateTime.saturday;
+  static int normalizeWeekDay(int firstWeekDay, int weekDay) {
     if (weekDay >= firstWeekDay) {
       return weekDay - firstWeekDay + 1;
     } else if (weekDay < firstWeekDay) {
@@ -18,7 +17,7 @@ class Week {
   Date get firstDayOfTheWeek {
     var wd = referenceDate.weekDay;
     var fwd = referenceDate.adapter.firstDayOfTheWeek;
-    var delta = normalizeWeekDay(wd, fwd) - 1;
+    var delta = normalizeWeekDay(fwd, wd) - 1;
     if (delta == 0) return referenceDate;
     return referenceDate.add(-delta);
   }
@@ -26,7 +25,7 @@ class Week {
   Date get lastDayOfTheWeek {
     var wd = referenceDate.weekDay;
     var fwd = referenceDate.adapter.firstDayOfTheWeek;
-    var delta = 7 - normalizeWeekDay(wd, fwd);
+    var delta = 7 - normalizeWeekDay(fwd, wd);
     return referenceDate.add(delta);
   }
 
