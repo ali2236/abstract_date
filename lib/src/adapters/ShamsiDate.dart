@@ -1,11 +1,8 @@
-
-
 import 'package:abstarct_date/abstarct_date.dart';
 import 'package:abstarct_date/src/dateAdapter/efficient_leap_year.dart';
 import '../external/shamsi_date/shamsi_date.dart' as shamsi;
 
 class ShamsiDate extends DateAdapter with DateFormatter, EfficientLeapYear {
-
   @override
   String get id => 'ShamsiDate';
 

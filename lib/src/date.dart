@@ -1,5 +1,3 @@
-
-
 import 'package:abstarct_date/abstarct_date.dart';
 
 class Date<T extends DateAdapter> extends AbstractDate<T> {
@@ -37,8 +35,8 @@ class Date<T extends DateAdapter> extends AbstractDate<T> {
   ///
   /// if their is no such adapter, it will return null.
   ///
-  static DateAdapter getAdapterWithId(String id){
-    return _adapters.values.firstWhere((a)=>a.id==id);
+  static DateAdapter getAdapterWithId(String id) {
+    return _adapters.values.firstWhere((a) => a.id == id);
   }
 
   ///

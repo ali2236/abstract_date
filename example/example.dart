@@ -19,7 +19,8 @@ void main() {
   date = miladi.to<ShamsiDate>();
   print(date);
 
-  var nth = Week.normalizeWeekDay(Date.getAdapterOfType<ShamsiDate>().firstDayOfTheWeek,DateTime.monday);
+  var nth = Week.normalizeWeekDay(
+      Date.getAdapterOfType<ShamsiDate>().firstDayOfTheWeek, DateTime.monday);
 
   print('Monday is the ${nth}rd day in shamsi calednar');
 

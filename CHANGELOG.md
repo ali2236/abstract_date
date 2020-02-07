@@ -1,3 +1,7 @@
+## [0.0.6]
+- added `Year` class
+- added `EfficientLeapYear` mixin for `DateAdapter`s
+
 ## [0.0.5]
 - default adapters will be registered automatically if their is no registered adapters
 - added `Week` class

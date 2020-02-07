@@ -1,5 +1,3 @@
-
-
 import 'date_adapter.dart';
 
 mixin DateFormatter on DateAdapter {

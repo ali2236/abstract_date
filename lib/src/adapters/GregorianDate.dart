@@ -1,7 +1,6 @@
 import 'package:abstarct_date/abstarct_date.dart';
 
 class GregorianDate extends DateAdapter with DateFormatter {
-
   @override
   String get id => 'GregorianDate';
 
@@ -27,23 +26,36 @@ class GregorianDate extends DateAdapter with DateFormatter {
 
   @override
   String monthName(int month) {
-    throw "TODO";
+    const names = [
+      null,
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ];
+    return names[month];
   }
 
   @override
   String weekDayName(int weekDay) {
     const names = [
       null,
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-      "Sunday"
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday',
+      'Sunday'
     ];
     return names[weekDay];
   }
-
-
 }

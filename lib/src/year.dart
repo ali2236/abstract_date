@@ -78,8 +78,9 @@ class Year {
   /// this method has a high chance of throwing an exception.
   ///
   bool get leapYear {
-    if(referenceDate.adapter is EfficientLeapYear){
-      return (referenceDate.adapter as EfficientLeapYear).isLeapYear(referenceDate.year);
+    if (referenceDate.adapter is EfficientLeapYear) {
+      return (referenceDate.adapter as EfficientLeapYear)
+          .isLeapYear(referenceDate.year);
     }
     throw 'Date adapter doesn\'t support leap year';
   }
@@ -101,7 +102,7 @@ class Year {
   Iterable<Week> get weeks sync* {
     var w = firstWeek;
     var lw = lastWeek;
-    while(w!=lw){
+    while (w != lw) {
       yield w;
       w = w.nextWeek;
     }
@@ -119,6 +120,4 @@ class Year {
       day = day.tomorrow;
     }
   }
-
-
 }
