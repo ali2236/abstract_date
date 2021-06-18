@@ -12,6 +12,7 @@ class Week {
     } else if (weekDay < firstWeekDay) {
       return (7 - firstWeekDay + 1) + weekDay;
     }
+    throw Error();
   }
 
   Date get firstDayOfTheWeek {

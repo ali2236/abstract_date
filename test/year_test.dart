@@ -1,5 +1,5 @@
 import 'package:abstarct_date/abstarct_date.dart';
-import 'package:abstarct_date/src/external/shamsi_date/src/jalali/jalali_date.dart';
+import 'package:shamsi_date/shamsi_date.dart' hide Date;
 import 'package:test/test.dart';
 
 void main() {

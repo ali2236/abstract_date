@@ -27,7 +27,7 @@ class Date<T extends DateAdapter> extends AbstractDate<T> {
         HijriDate: HijriDate(),
       });
     }
-    return _adapters[A];
+    return _adapters[A]!;
   }
 
   ///
@@ -51,7 +51,7 @@ class Date<T extends DateAdapter> extends AbstractDate<T> {
   /// to the [NEW] type
   ///
   static void renameType<OLD extends DateAdapter, NEW extends DateAdapter>() {
-    addType<NEW>(_adapters[OLD]);
+    addType<NEW>(_adapters[OLD]!);
     removeType<OLD>();
   }
 
@@ -74,13 +74,12 @@ class Date<T extends DateAdapter> extends AbstractDate<T> {
   ///
   /// creates a new [Date] with the current date converted to date type of [T]
   ///
-  factory Date.now() => getAdapterOfType<T>().fromDateTime(DateTime.now());
+  factory Date.now() => getAdapterOfType<T>().fromDateTime(DateTime.now()) as Date<T>;
 
   ///
   /// creates a new [Date] from a [DateTime] converted to DateType of [T]
   ///
-  factory Date.fromDateTime(DateTime dt) =>
-      getAdapterOfType<T>().fromDateTime(dt);
+  factory Date.fromDateTime(DateTime dt) => getAdapterOfType<T>().fromDateTime(dt) as Date<T>;
 
   ///
   /// constructs a new [Date] from another instance of an [AbstractDate]
@@ -142,7 +141,7 @@ class Date<T extends DateAdapter> extends AbstractDate<T> {
   ///
   /// Type [A] must be registered, otherwise it will throw an exception.
   ///
-  Date<A> to<A extends DateAdapter>() => _adapters[A].fromDateTime(dateTime);
+  Date<A> to<A extends DateAdapter>() => getAdapterOfType<A>().fromDateTime(dateTime) as Date<A>;
   @Deprecated('use [to] inestead')
   Date<A> as<A extends DateAdapter>() => to<A>();
 
@@ -153,7 +152,7 @@ class Date<T extends DateAdapter> extends AbstractDate<T> {
     if (days == 0) return copy();
     var hours = 0; //days > 0 ? 1 : -1;
     return adapter
-        .fromDateTime(dateTime.add(Duration(days: days, hours: hours)));
+        .fromDateTime(dateTime.add(Duration(days: days, hours: hours))) as Date<T>;
   }
 
   ///
@@ -166,7 +165,7 @@ class Date<T extends DateAdapter> extends AbstractDate<T> {
   ///
   /// creates a new [Date] but with the optional parameter overrides.
   ///
-  Date<T> copy({int year, int month, int day}) =>
+  Date<T> copy({int? year, int? month, int? day}) =>
       Date<T>(year ?? this.year, month ?? this.month, day ?? this.day);
 
   ///

@@ -41,7 +41,7 @@ class GregorianDate extends DateAdapter with DateFormatter {
       'November',
       'December',
     ];
-    return names[month];
+    return names[month]!;
   }
 
   @override
@@ -56,6 +56,6 @@ class GregorianDate extends DateAdapter with DateFormatter {
       'Saturday',
       'Sunday'
     ];
-    return names[weekDay];
+    return names[weekDay]!;
   }
 }
