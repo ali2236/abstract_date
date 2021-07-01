@@ -20,14 +20,14 @@ class Date<T extends DateAdapter> extends AbstractDate<T> {
   /// if their are no adapters registered, it will register the default adapters
   ///
   static DateAdapter getAdapterOfType<A extends DateAdapter>() {
-    if (_adapters.isEmpty) {
-      _adapters.addAll({
-        GregorianDate: GregorianDate(),
-        ShamsiDate: ShamsiDate(),
-        HijriDate: HijriDate(),
-      });
+    var adapter = _adapters[A];
+    if(adapter != null){
+      return adapter;
+    } else if (A == dynamic && _adapters.isNotEmpty){
+      return _adapters.entries.first.value;
+    } else {
+      return GregorianDate();
     }
-    return _adapters[A]!;
   }
 
   ///

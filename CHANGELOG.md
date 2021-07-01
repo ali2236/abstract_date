@@ -1,3 +1,6 @@
+## [1.0.0]
+- null safety
+
 ## [0.0.6]
 - added `Year` class
 - added `EfficientLeapYear` mixin for `DateAdapter`s
