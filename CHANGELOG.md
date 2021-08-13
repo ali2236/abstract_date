@@ -1,3 +1,6 @@
+## [1.0.2]
+- renamed package from `abstarct_date` to `abstract_date`
+
 ## [1.0.0]
 - null safety
 
