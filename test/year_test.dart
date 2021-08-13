@@ -1,4 +1,4 @@
-import 'package:abstarct_date/abstarct_date.dart';
+import 'package:abstract_date/abstract_date.dart';
 import 'package:shamsi_date/shamsi_date.dart' hide Date;
 import 'package:test/test.dart';
 

@@ -1,6 +1,6 @@
-import 'package:abstarct_date/src/week.dart';
-import 'package:abstarct_date/src/year.dart';
 import 'date.dart';
+import 'week.dart';
+import 'year.dart';
 
 ///
 /// This class is used to represent the [T] month that [referenceDate] of type [T] is in.

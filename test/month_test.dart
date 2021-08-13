@@ -1,4 +1,4 @@
-import 'package:abstarct_date/abstarct_date.dart';
+import 'package:abstract_date/abstract_date.dart';
 import 'package:test/test.dart';
 
 void main() {

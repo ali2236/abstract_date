@@ -1,4 +1,4 @@
-library abstarct_date;
+library abstract_date;
 
 export 'src/date.dart';
 export 'src/dateAdapter/date_adapter.dart';

@@ -1,6 +1,4 @@
-import 'package:abstarct_date/abstarct_date.dart';
-import 'package:abstarct_date/src/adapters/GregorianDate.dart';
-import 'package:abstarct_date/src/adapters/ShamsiDate.dart';
+import 'package:abstract_date/abstract_date.dart';
 import 'package:test/test.dart';
 
 void main() {

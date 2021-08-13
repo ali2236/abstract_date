@@ -1,4 +1,4 @@
-import 'package:abstarct_date/abstarct_date.dart';
+import 'date_adapter.dart';
 
 mixin EfficientLeapYear on DateAdapter {
   bool isLeapYear(int year);
