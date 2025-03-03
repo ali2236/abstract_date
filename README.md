@@ -31,7 +31,7 @@
 
 # Date adapters
 
-###Adding Adapters:
+### Adding Adapters:
 Before using `Date` you should register the types you want to use.
 ```dart
     Date.addType<ShamsiDate>(ShamsiDate());

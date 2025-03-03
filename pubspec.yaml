@@ -1,13 +1,13 @@
 name: abstract_date
 description: Abstract date is a fluent abstract date system for working with different date types.
-version: 1.0.2
+version: 1.0.3
 homepage: https://github.com/ali2236/abstarct_date
 
 environment:
   sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
-  shamsi_date: ^0.15.0
+  shamsi_date: ^1.0.4
 
 dev_dependencies:
   test: ^1.16.0
