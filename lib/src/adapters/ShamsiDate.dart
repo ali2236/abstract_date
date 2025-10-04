@@ -59,11 +59,11 @@ class ShamsiDate extends DateAdapter with DateFormatter, EfficientLeapYear {
   String weekDayName(int weekDay) {
     const names = [
       'شنبه',
-      'یک شنبه',
-      'دو شنبه',
-      'سه شنبه',
-      'چهار شنبه',
-      'پنج شنبه',
+      'یک‌شنبه',
+      'دو‌شنبه',
+      'سه‌شنبه',
+      'چهار‌شنبه',
+      'پنج‌شنبه',
       'جمعه'
     ];
     if (weekDay >= DateTime.saturday) {
