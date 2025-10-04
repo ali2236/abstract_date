@@ -1,3 +1,6 @@
+## [1.0.4]
+- Use half-space instead of full space in Shamsi day of week
+
 ## [1.0.3]
 - Updated `shamsi_date`
 
